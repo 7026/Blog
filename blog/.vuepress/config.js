@@ -27,10 +27,12 @@ module.exports = {
       { text: '首页', link: '/', icon: 'reco-home' }, //text:导航标题内容，icon：图标样式
       { text: '时间线', link: '/timeline/', icon: 'reco-date' },
       {
-        text: '文档',
+        text: '梳理',
         icon: 'reco-message',
         items: [
           { text: 'vuepress-reco', link: '/docs/theme-reco/' }, //item： 子导航
+          { text: 'VUE', link: '/docs/vue/' }, //item： 子导航
+          { text: 'Linux', link: '/blogs/linux/' }, //item： 子导航
         ],
       },
       {
@@ -49,13 +51,15 @@ module.exports = {
     //侧边栏设置
     sidebar: {
       '/docs/theme-reco/': ['', 'theme', 'plugin', 'api'],
+      '/docs/vue/': ['', 'theme', 'plugin', 'api'],
+      '/blogs/linux/': [''],
     },
     type: 'blog',
     // 博客设置
     blogConfig: {
       category: {
         location: 2, // 在导航栏菜单中所占的位置，默认2
-        text: '分类', // 默认 “分类”
+        text: '笔记', // 默认 “分类”
       },
       tag: {
         location: 3, // 在导航栏菜单中所占的位置，默认3
