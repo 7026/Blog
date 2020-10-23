@@ -182,8 +182,8 @@ module.exports = {
           owner: '7026',
           repo: 'Blog',
           //https://vuepress-theme-reco.recoluan.com/views/plugins/comments.html
-          clientId: ' Iv1.b06e8a986da8c1a6',
-          clientSecret: '552bf2cb3bc5e8c41b79078088ccde4caca56c35',
+          clientId: 'b180d246be0a81112d38',
+          clientSecret: 'f1edd5899fae81821fac2bee9852c1003f997523',
         },
       },
     ],
