@@ -32,7 +32,7 @@ module.exports = {
         items: [
           { text: 'vuepress-reco', link: '/docs/theme-reco/' }, //item： 子导航
           { text: 'VUE', link: '/docs/vue/' }, //item： 子导航
-          { text: 'Linux', link: '/blogs/linux/' }, //item： 子导航
+          // { text: 'Linux', link: '/blogs/linux/' }, //item： 子导航
         ],
       },
       {
@@ -52,7 +52,7 @@ module.exports = {
     sidebar: {
       '/docs/theme-reco/': ['', 'theme', 'plugin', 'api'],
       '/docs/vue/': ['', 'theme', 'plugin', 'api'],
-      '/blogs/linux/': [''],
+      // '/blogs/linux/': [''],
     },
     type: 'blog',
     // 博客设置
