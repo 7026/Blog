@@ -3,3 +3,4 @@ node_modules/
 
 blog/public
 blog/start.sh
+blog/package-lock.json
