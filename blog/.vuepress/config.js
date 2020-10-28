@@ -52,7 +52,7 @@ module.exports = {
     //侧边栏设置
     sidebar: {
       '/docs/theme-reco/': ['', 'theme', 'plugin', 'api'],
-      '/docs/vue/': ['', 'theme', 'plugin', 'api'],
+      '/docs/vue/': ['', 'Vuex', 'plugin', 'api'],
       // '/blogs/linux/': [''],
     },
     type: 'blog',

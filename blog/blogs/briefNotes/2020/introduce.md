@@ -2,7 +2,7 @@
 title: 简单介绍
 date: 2020-10-21
 tags:
-  - tag4
+  - briefNotes
 categories:
   - briefNotes
 ---
@@ -13,9 +13,9 @@ categories:
 
 1. 安装
 
-2. VuePress 遵循 “约定优于配置” 的原则，按照官网设置目录结构 
+2. VuePress 遵循 “约定优于配置” 的原则，按照官网设置目录结构
 
-3. 在md中加入静态图片的问题，在md文件中可以使用下面的方式应用静态图片，下面imgs文件夹在public文件件下 目录如下
+3. 在 md 中加入静态图片的问题，在 md 文件中可以使用下面的方式应用静态图片，下面 imgs 文件夹在 public 文件件下 目录如下
 
 ```js
 <img :src="$withBase('/img/001.png')" alt="mixureSecure">
