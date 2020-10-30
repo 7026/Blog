@@ -5,9 +5,15 @@ tags:
   - briefNotes
 categories:
   - briefNotes
+sticky:
+  - description: true
 ---
 
-## 开始全栈生活
+:::tip 介绍
+开始全栈生活
+:::
+
+<!-- more -->
 
 ## vuepress 创建自己的开发者文档 静态图片引用问题解决
 
