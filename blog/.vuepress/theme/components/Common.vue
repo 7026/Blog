@@ -5,6 +5,7 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
+    <h1>hahaha</h1>
     <div v-if="!absoluteEncryption">
       <transition name="fade">
         <LoadingPage v-show="firstLoad" class="loading-wrapper" />

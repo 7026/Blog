@@ -1,8 +1,9 @@
 <template>
   <div class="abstract-item" @click="$router.push(item.path)">
-    <div class="img-cover" style="display: inline-block; width: 20%">
+    <div class="img-cover">
       <img src="../images/6.jpg" class="cover-img" alt="" srcset="" />
     </div>
+    <!-- <div class="test">111</div> -->
     <div class="info">
       <i v-if="item.frontmatter.sticky" class="iconfont reco-sticky"></i>
       <div class="title">
@@ -21,6 +22,9 @@ import PageInfo from "./PageInfo";
 export default {
   components: { PageInfo },
   props: ["item", "currentPage", "currentTag"],
+  mounted() {
+    console.log(this.item);
+  },
 };
 </script>
 
@@ -51,12 +55,12 @@ export default {
     flex 1
     overflow hidden
     border-radius 0.5rem
-    .cover-img
-      border-radius 0.5rem
-      max-width 320px
-      transition 1s ease-out
-    .cover-img:hover
-      transform scale3d(1.1, 1.1, 1)
+  .cover-img
+    border-radius 0.5rem
+    max-width 320px
+    transition 1s ease-out
+  .cover-img:hover
+    transform scale3d(1.1, 1.1, 1)
   .info
     flex 1
     display flex
@@ -114,4 +118,33 @@ export default {
     display block
     margin-top 1rem
     margin-left 0 !important
+  .abstract-item
+    display block
+    text-align center
+    .img-cover
+      width 100%
+      display inline-flex
+      .cover-img
+        border-radius 0.5rem
+        max-width 320px
+        transition 1s ease-out
+      .cover-img:hover
+        transform scale3d(1.1, 1.1, 1)
+// 自定义样式
+@media (max-width 1126px)
+  .abstract-item
+    .img-cover
+      max-width 200px
+      flex 1
+      overflow hidden
+      border-radius 0.5rem
+      display flex
+      align-items center
+      .cover-img
+        border-radius 0.5rem
+        max-width 200px
+        transition 1s ease-out
+@media (max-width 1080px)
+  .img-cover
+    display none
 </style>

@@ -1,11 +1,14 @@
 <template>
   <div class="password-shadow">
     <ModuleTransition>
-      <h3 v-show="recoShowModule" class="title">{{isPage ? $frontmatter.title : $site.title || $localeConfig.title}}</h3>
+      <h3 v-show="recoShowModule" class="title">
+        {{ isPage ? $frontmatter.title : $site.title || $localeConfig.title }}
+      </h3>
     </ModuleTransition>
-
     <ModuleTransition delay="0.08">
-      <p class="description" v-if="recoShowModule && !isPage">{{$site.description || $localeConfig.description}}</p>
+      <p class="description" v-if="recoShowModule && !isPage">
+        {{ $site.description || $localeConfig.description }}
+      </p>
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
@@ -15,8 +18,9 @@
           type="password"
           @keyup.enter="inter"
           @focus="inputFocus"
-          @blur="inputBlur">
-        <span>{{warningText}}</span>
+          @blur="inputBlur"
+        />
+        <span>{{ warningText }}</span>
         <button ref="passwordBtn" @click="inter">OK</button>
       </label>
     </ModuleTransition>
@@ -25,14 +29,21 @@
       <div v-show="recoShowModule" class="footer">
         <span>
           <i class="iconfont reco-theme"></i>
-          <a target="blank" href="https://vuepress-theme-reco.recoluan.com">vuePress-theme-reco</a>
+          <a target="blank" href="https://vuepress-theme-reco.recoluan.com"
+            >vuePress-theme-reco</a
+          >
         </span>
         <span>
           <i class="iconfont reco-copyright"></i>
           <a>
-            <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
+            <span v-if="$themeConfig.author || $site.title">{{
+              $themeConfig.author || $site.title
+            }}</span>
             &nbsp;&nbsp;
-            <span v-if="$themeConfig.startYear && $themeConfig.startYear != year">{{ $themeConfig.startYear }} - </span>
+            <span
+              v-if="$themeConfig.startYear && $themeConfig.startYear != year"
+              >{{ $themeConfig.startYear }} -
+            </span>
             {{ year }}
           </a>
         </span>
@@ -42,9 +53,9 @@
 </template>
 
 <script>
-import md5 from 'md5'
-import ModuleTransition from '@theme/components/ModuleTransition'
-import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
+import md5 from "md5";
+import ModuleTransition from "@theme/components/ModuleTransition";
+import moduleTransitonMixin from "@theme/mixins/moduleTransiton";
 
 export default {
   mixins: [moduleTransitonMixin],
@@ -52,199 +63,186 @@ export default {
   props: {
     isPage: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  name: 'Password',
-  data () {
+  name: "Password",
+  data() {
     return {
-      warningText: 'Konck! Knock!',
-      key: ''
-    }
+      warningText: "Konck! Knock!",
+      key: "",
+    };
   },
   computed: {
-    year () {
-      return new Date().getFullYear()
-    }
+    year() {
+      return new Date().getFullYear();
+    },
   },
   methods: {
-    inter () {
+    inter() {
       const {
         key,
         isPage,
         isHasPageKey,
         isHasKey,
-        $refs: { passwordBtn }
-      } = this
-      const keyVal = md5(key.trim())
-      const pageKey = `pageKey${window.location.pathname}`
-      const keyName = isPage ? pageKey : 'key'
-      sessionStorage.setItem(keyName, keyVal)
-      const isKeyTrue = isPage ? isHasPageKey() : isHasKey()
+        $refs: { passwordBtn },
+      } = this;
+      const keyVal = md5(key.trim());
+      const pageKey = `pageKey${window.location.pathname}`;
+      const keyName = isPage ? pageKey : "key";
+      sessionStorage.setItem(keyName, keyVal);
+      const isKeyTrue = isPage ? isHasPageKey() : isHasKey();
       if (!isKeyTrue) {
-        this.warningText = 'Key Error'
-        return
+        this.warningText = "Key Error";
+        return;
       }
 
-      this.warningText = 'Key Success'
+      this.warningText = "Key Success";
 
-      const width = document.getElementById('box').style.width
+      const width = document.getElementById("box").style.width;
 
-      passwordBtn.style.width = `${width - 2}px`
-      passwordBtn.style.opacity = 1
+      passwordBtn.style.width = `${width - 2}px`;
+      passwordBtn.style.opacity = 1;
       setTimeout(() => {
-        window.location.reload()
-      }, 800)
+        window.location.reload();
+      }, 800);
     },
-    inputFocus () {
-      this.warningText = 'Input Your Key'
+    inputFocus() {
+      this.warningText = "Input Your Key";
     },
-    inputBlur () {
-      this.warningText = 'Konck! Knock!'
+    inputBlur() {
+      this.warningText = "Konck! Knock!";
     },
-    isHasKey () {
-      let { keys } = this.$themeConfig.keyPage
-      keys = keys.map(item => item.toLowerCase())
-      return keys.indexOf(sessionStorage.getItem('key')) > -1
+    isHasKey() {
+      let { keys } = this.$themeConfig.keyPage;
+      keys = keys.map((item) => item.toLowerCase());
+      return keys.indexOf(sessionStorage.getItem("key")) > -1;
     },
-    isHasPageKey () {
-      const pageKeys = this.$frontmatter.keys.map(item => item.toLowerCase())
-      const pageKey = `pageKey${window.location.pathname}`
+    isHasPageKey() {
+      const pageKeys = this.$frontmatter.keys.map((item) => item.toLowerCase());
+      const pageKey = `pageKey${window.location.pathname}`;
 
-      return pageKeys && pageKeys.indexOf(sessionStorage.getItem(pageKey)) > -1
-    }
-  }
-}
+      return pageKeys && pageKeys.indexOf(sessionStorage.getItem(pageKey)) > -1;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
 @require '../styles/mode.styl'
-
-.password-shadow {
+.password-shadow
   overflow hidden
   position relative
   background #fff
   background var(--background-color)
   box-sizing border-box
-  .title {
+  .title
     margin 8rem auto 2rem
     width 100%
     text-align center
     font-size 30px
-    box-sizing: border-box;
+    box-sizing border-box
     text-shadow $textShadow
     color $textColor
     color var(--text-color)
-  }
-  .description {
+  .description
     margin 0 auto 6rem
     text-align center
     color $textColor
     color var(--text-color)
     font-size 22px
-    box-sizing: border-box;
-    padding: 0 10px;
+    box-sizing border-box
+    padding 0 10px
     text-shadow $textShadow
-  }
-  .inputBox{
+  .inputBox
     position absolute
     top 40%
     left 0
     right 0
     margin auto
     display block
-    max-width:700px;
-    height: 100px;
-    background: $accentColor;
-    border-radius: $borderRadius
+    max-width 700px
+    height 100px
+    background $accentColor
+    border-radius $borderRadius
     padding-left 20px
     box-sizing border-box
     opacity 0.9
-    input{
-      width:600px;
-      height:100%;
-      border:none;
-      padding:0;
-      padding-left:5px;
-      color: #fff;
-      background: none;
-      outline: none;
-      position: absolute;
-      bottom:0;
+    input
+      width 600px
+      height 100%
+      border none
+      padding 0
+      padding-left 5px
+      color #fff
+      background none
+      outline none
+      position absolute
+      bottom 0
       left 20px
       opacity 0
       font-size 50px
-      &:focus {
+      &:focus
         opacity 1
-      }
-      &:focus~span{
-        transform: translateY(-80px);
+      &:focus~span
+        transform translateY(-80px)
         color $accentColor
         font-size 30px
-        opacity:0.8;
-      }
-      &:focus~button{
-        opacity:1;
-        width:100px;
-      }
-    }
-    span{
-      width:200px;
-      height: 100%;
-      display: block;
-      position: absolute;
-      line-height:100px;
-      top:0;
-      left:20px;
-      color: #fff;
-      cursor: text;
-      transition: 0.5s;
-      transform-origin: left top;
+        opacity 0.8
+      &:focus~button
+        opacity 1
+        width 100px
+    span
+      width 200px
+      height 100%
+      display block
+      position absolute
+      line-height 100px
+      top 0
+      left 20px
+      color #fff
+      cursor text
+      transition 0.5s
+      transform-origin left top
       font-size 30px
-    }
-    button{
+    button
       overflow hidden
-      width:0px;
-      height:98px;
-      border-radius: $borderRadius
-      position: absolute;
+      width 0px
+      height 98px
+      border-radius $borderRadius
+      position absolute
       border 1px solid $accentColor
       background var(--background-color)
-      right:1px;
+      right 1px
       top 1px
-      border:0;
-      padding:0;
-      color: $accentColor;
-      font-size:18px;
-      outline:none;
-      cursor: pointer;
-      opacity:0;
-      transition: 0.5s;
-      z-index: 1;
-    }
-  }
-  .footer {
-    position: absolute;
+      border 0
+      padding 0
+      color $accentColor
+      font-size 18px
+      outline none
+      cursor pointer
+      opacity 0
+      transition 0.5s
+      z-index 1
+  .footer
+    position absolute
     left 0
     right 0
     bottom 10%
-    padding: 2.5rem;
-    text-align: center;
-    color: lighten($textColor, 25%);
-    > span {
+    padding 2.5rem
+    text-align center
+    color lighten($textColor, 25%)
+    > span
       margin-left 1rem
-      > i {
-        margin-right .5rem
-      }
-    }
-  }
-  @media (max-width: $MQMobile) {
-    .inputBox{
-      max-width:700px;
-      height: 60px;
-      background: $accentColor;
-      border-radius: $borderRadius
-      position: absolute;
+      > i
+        margin-right 0.5rem
+  @media (max-width $MQMobile)
+    .inputBox
+      max-width 700px
+      height 60px
+      background $accentColor
+      border-radius $borderRadius
+      position absolute
       left 0
       right 0
       top 43%
@@ -252,76 +250,63 @@ export default {
       padding-left 0
       box-sizing border-box
       opacity 0.9
-      input{
-        width: 60%;
-        height:100%;
-        border:none;
-        padding:0;
-        padding-left:5px;
-        color: #fff;
-        background: none;
-        outline: none;
-        position: absolute;
-        bottom:0;
+      input
+        width 60%
+        height 100%
+        border none
+        padding 0
+        padding-left 5px
+        color #fff
+        background none
+        outline none
+        position absolute
+        bottom 0
         opacity 0
         font-size 30px
-        &:focus {
+        &:focus
           opacity 1
-        }
-        &:focus~span{
-          transform: translateY(-60px);
+        &:focus~span
+          transform translateY(-60px)
           color $accentColor
           font-size 20px
-          opacity:0.8;
-        }
-        &:focus~button{
-          opacity:1;
-          width:60px;
-        }
-      }
-      span{
-        width:200px;
-        height: 100%;
-        display: block;
-        position: absolute;
-        line-height:60px;
-        top:0;
-        left:20px;
-        color: #fff;
-        cursor: text;
-        transition: 0.5s;
-        transform-origin: left top;
+          opacity 0.8
+        &:focus~button
+          opacity 1
+          width 60px
+      span
+        width 200px
+        height 100%
+        display block
+        position absolute
+        line-height 60px
+        top 0
+        left 20px
+        color #fff
+        cursor text
+        transition 0.5s
+        transform-origin left top
         font-size 20px
-      }
-      button{
-        width:0px;
-        height:58px;
-        border-radius: $borderRadius
-        position: absolute;
+      button
+        width 0px
+        height 58px
+        border-radius $borderRadius
+        position absolute
         border 1px solid $accentColor
-        right:1px;
+        right 1px
         top 1px
-        border:0;
-        padding:0;
-        background: #fff;
-        color: $accentColor;
-        font-size:18px;
-        outline:none;
-        cursor: pointer;
-        opacity:0;
-        transition: 0.5s;
-        z-index: 1;
-      }
-    }
-    .footer {
+        border 0
+        padding 0
+        background #fff
+        color $accentColor
+        font-size 18px
+        outline none
+        cursor pointer
+        opacity 0
+        transition 0.5s
+        z-index 1
+    .footer
       margin-left 0
-
-    }
-  }
-  @media (max-width: $MQNarrow) {
-    .footer {
+  @media (max-width $MQNarrow)
+    .footer
       margin-left 0
-    }
-  }
-}
 </style>

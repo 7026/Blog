@@ -97,7 +97,7 @@ module.exports = {
     // 作者头像
     authorAvatar: '/avatar.png',
     // 备案号
-    record: 'xxxx',
+    record: '辽ICP备2020013474号',
     // 项目开始时间
     startYear: '2020',
     /**
