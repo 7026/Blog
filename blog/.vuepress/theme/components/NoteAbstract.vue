@@ -1,28 +1,29 @@
 <template>
   <div class="abstract-wrapper">
     <NoteAbstractItem
-      v-for="(item) in currentPageData"
+      v-for="item in currentPageData"
       :key="item.path"
       :item="item"
       :currentPage="currentPage"
-      :currentTag="currentTag" />
+      :currentTag="currentTag"
+    />
   </div>
 </template>
 
 <script>
-import NoteAbstractItem from './NoteAbstractItem'
+import NoteAbstractItem from "./NoteAbstractItem";
 
 export default {
   components: { NoteAbstractItem },
-  props: ['data', 'currentPage', 'currentTag'],
+  props: ["data", "currentPage", "currentTag"],
   computed: {
-    currentPageData () {
-      const start = this.currentPage * 10 - 10
-      const end = this.currentPage * 10
-      return this.data.slice(start, end)
-    }
-  }
-}
+    currentPageData() {
+      const start = this.currentPage * 10 - 10;
+      const end = this.currentPage * 10;
+      return this.data.slice(start, end);
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

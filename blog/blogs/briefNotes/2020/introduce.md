@@ -8,7 +8,7 @@ categories:
 sticky:
   - description: true
 img:
-  - /Users/mac/Desktop/Object/vue/Blog/blog/.vuepress/public/avatar2.png
+  - /abstract/WechatIMG8.png
 ---
 
 :::tip 介绍

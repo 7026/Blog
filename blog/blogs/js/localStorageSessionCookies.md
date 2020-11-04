@@ -5,17 +5,16 @@ tags:
   - JS
 categories:
   - JS
-meta:
-  - name: description
-    content: hello
-  - name: keywords
-    content: super duper SEO
+img:
+  - /abstract/2.jpeg
 ---
 
 :::tip 介绍
-localStorage和session、cookies区别
+localStorage 和 session、cookies 区别
 :::
+
 <!-- more -->
+
 ## 简介
 
 ::: theorem cookie：

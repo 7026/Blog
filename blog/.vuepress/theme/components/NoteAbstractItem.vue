@@ -1,7 +1,7 @@
 <template>
   <div class="abstract-item" @click="$router.push(item.path)">
-    <div class="img-cover">
-      <img src="../images/6.jpg" class="cover-img" alt="" srcset="" />
+    <div v-if="item.frontmatter.img" class="img-cover">
+      <img :src="item.frontmatter.img" class="cover-img" alt="" srcset="" />
     </div>
     <!-- <div class="test">111</div> -->
     <div class="info">
@@ -48,13 +48,14 @@ export default {
     pointer-events auto
     // 自添加样式
   .img-cover
-    // max-width 320px
+    max-width 320px
+    max-height 220px
     flex 1
     overflow hidden
     border-radius 0.5rem
   .cover-img
     border-radius 0.5rem
-    max-width 320px
+    max-height 220px
     transition 1s ease-out
   .cover-img:hover
     transform scale3d(1.1, 1.1, 1)
