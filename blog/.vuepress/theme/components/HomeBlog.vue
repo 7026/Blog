@@ -317,11 +317,12 @@ export default {
         margin 0 auto 1.8rem
         font-size 2rem
       p
-        line-height 1.2
+        line-height 1.4
         margin-block-start 0.67em
         margin-block-end 0.67em
         margin-inline-start 0px
         margin-inline-end 0px
+        font-size 2rem
       h1, .description, .action
         // margin: 1.2rem auto;
       .description
