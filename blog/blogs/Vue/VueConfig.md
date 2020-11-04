@@ -1,11 +1,16 @@
 ---
-title: 文件配置,全局组件
+title: Vue @ 代替src 路径 文件配置,全局组件
 date: 2020-10-22
 tags:
   - Vue
 categories:
   - Vue
 ---
+
+:::tip 介绍
+文件配置,全局组件
+:::
+<!-- more -->
 
 ## Vue @ 代替src 路径   vue.config.js 文件配置
 

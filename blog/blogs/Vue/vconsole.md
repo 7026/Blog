@@ -7,6 +7,11 @@ categories:
   - Vue
 ---
 
+:::tip 介绍
+vue 移动端调试工具（vconsole）
+:::
+<!-- more -->
+
 ## vue 移动端调试工具（vconsole）
 
 1. 安装

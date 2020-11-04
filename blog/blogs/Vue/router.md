@@ -7,6 +7,11 @@ categories:
   - Vue
 ---
 
+:::tip 介绍
+验证token route 跳转
+:::
+<!-- more -->
+
 ## token route 跳转正确办法
 
 ```javascript

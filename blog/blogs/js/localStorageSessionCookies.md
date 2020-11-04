@@ -10,7 +10,13 @@ meta:
     content: hello
   - name: keywords
     content: super duper SEO
----## 简介
+---
+
+:::tip 介绍
+localStorage和session、cookies区别
+:::
+<!-- more -->
+## 简介
 
 ::: theorem cookie：
 由网景公司的前雇员在 1993 年发明。它的主要用于保存登陆信息，比如登陆某个网站市场可以看到'记住密码’，这就是通过在 cookie 中存入一段辨别用户身份的数据来实现的。

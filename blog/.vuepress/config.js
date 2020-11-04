@@ -192,6 +192,7 @@ module.exports = {
         },
       },
     ],
+    ['vuepress-plugin-boxx'],
   ],
   markdown: {
     lineNumbers: true,

@@ -7,6 +7,11 @@ categories:
   - Linux
 ---
 
+
+:::tip 介绍
+Linux常用命令
+:::
+<!-- more -->
 ## 命令
 
 > 重启： reboot

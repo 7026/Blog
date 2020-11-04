@@ -12,8 +12,8 @@ heroImageStyle:
     background: '#fff',
     borderRadius: '1rem',
   }
-bgImage: '/home-bg.jpg'
-bgImageStyle: { height: '450px' }
+bgImage: '/bg001.jpg'
+# bgImageStyle: { height: '550px' }
 isShowTitleInHome: false
 actionText: Guide
 actionLink: /views/other/guide

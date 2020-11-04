@@ -23,11 +23,13 @@
             v-if="recoShowModule && $frontmatter.tagline !== null"
             class="description"
           >
-            {{
+            <!-- {{
               $frontmatter.tagline ||
               $description ||
               "Welcome to your vuePress-theme-reco site"
-            }}
+            }} -->
+            <!-- 名人名言 -->
+            <Boxx :titleStyle="titleStyle" :blockStyle="blockStyle" />
           </p>
         </ModuleTransition>
       </div>
@@ -116,6 +118,15 @@ export default {
       recoShow: false,
       currentPage: 1,
       tags: [],
+      //名人名言 样式
+      titleStyle: { display: "none" },
+      blockStyle: {
+        fontFamily: "Long Cang,cursive!important",
+        color: "#fff",
+        border: "none",
+        background: "none",
+        fontSize: "2.5rem",
+      },
     };
   },
   computed: {
@@ -274,7 +285,7 @@ export default {
 @media (max-width $MQMobile)
   .home-blog
     .hero
-      height 450px
+      height 100vh
       img
         max-height 210px
         margin 2rem auto 1.2rem
@@ -298,13 +309,19 @@ export default {
 @media (max-width $MQMobileNarrow)
   .home-blog
     .hero
-      height 450px
+      height 100vh
       img
         max-height 210px
         margin 2rem auto 1.2rem
       h1
         margin 0 auto 1.8rem
         font-size 2rem
+      p
+        line-height 1.2
+        margin-block-start 0.67em
+        margin-block-end 0.67em
+        margin-inline-start 0px
+        margin-inline-end 0px
       h1, .description, .action
         // margin: 1.2rem auto;
       .description

@@ -22,9 +22,6 @@ import PageInfo from "./PageInfo";
 export default {
   components: { PageInfo },
   props: ["item", "currentPage", "currentTag"],
-  mounted() {
-    console.log(this.item);
-  },
 };
 </script>
 
@@ -51,7 +48,7 @@ export default {
     pointer-events auto
     // 自添加样式
   .img-cover
-    max-width 320px
+    // max-width 320px
     flex 1
     overflow hidden
     border-radius 0.5rem
@@ -114,6 +111,8 @@ export default {
       &:hover
         color $accentColor
 @media (max-width $MQMobile)
+  .abstract
+    margin 0 !important
   .tags
     display block
     margin-top 1rem
@@ -123,7 +122,9 @@ export default {
     text-align center
     .img-cover
       width 100%
+      max-width 320px
       display inline-flex
+      margin 0 auto
       .cover-img
         border-radius 0.5rem
         max-width 320px
@@ -132,18 +133,17 @@ export default {
         transform scale3d(1.1, 1.1, 1)
 // 自定义样式
 @media (max-width 1126px)
-  .abstract-item
-    .img-cover
-      max-width 200px
-      flex 1
-      overflow hidden
+  .img-cover
+    max-width 200px
+    flex 1
+    overflow hidden
+    border-radius 0.5rem
+    display flex
+    align-items center
+    .cover-img
       border-radius 0.5rem
-      display flex
-      align-items center
-      .cover-img
-        border-radius 0.5rem
-        max-width 200px
-        transition 1s ease-out
+      max-width 200px
+      transition 1s ease-out
 @media (max-width 1080px)
   .img-cover
     display none
