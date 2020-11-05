@@ -12,7 +12,6 @@
           />
         </ModuleTransition>
         <h1>11102stt</h1>
-        <h1>11102stt</h1>
         <!-- <ModuleTransition delay="0.04">
           <h1 v-if="recoShowModule && $frontmatter.heroText !== null">
             {{ $frontmatter.heroText || $title || "vuePress-theme-reco" }}
