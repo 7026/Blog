@@ -29,8 +29,8 @@ jobs:
           npm run build
 
       - name: Deploy to Tencent Cloud server via rsync
-        uses: easingthemes/ssh-deploy@main
-        env:
+        uses: easingthemes/ssh-deploy@v6.0.3
+        with:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           SOURCE: "blog/public/"
           REMOTE_HOST: "124.220.54.59"
