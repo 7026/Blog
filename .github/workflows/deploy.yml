@@ -1,0 +1,38 @@
+name: Deploy Blog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          cd blog
+          npm install
+
+      - name: Build VuePress site
+        run: |
+          cd blog
+          npm run build
+
+      - name: Deploy to Tencent Cloud server via rsync
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "blog/public/"
+          REMOTE_HOST: "124.220.54.59"
+          REMOTE_USER: "root"
+          TARGET: "/www/wwwroot"
