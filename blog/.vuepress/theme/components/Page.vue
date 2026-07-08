@@ -2,12 +2,20 @@
   <!-- 文章具体内容 -->
   <main class="page" :style="pageStyle">
     <ModuleTransition>
-      <div v-show="recoShowModule && $page.title" class="page-title">
-        <h1 class="title">{{ $page.title }}</h1>
-        <PageInfo
-          :pageInfo="$page"
-          :showAccessNumber="showAccessNumber"
-        ></PageInfo>
+      <div
+        v-show="recoShowModule && $page.title"
+        class="page-title"
+        :style="{
+          backgroundImage: `url(${$frontmatter.img})`,
+        }"
+      >
+        <div class="warp-title-content">
+          <h1 class="title">{{ $page.title }}</h1>
+          <PageInfo
+            :pageInfo="$page"
+            :showAccessNumber="showAccessNumber"
+          ></PageInfo>
+        </div>
       </div>
     </ModuleTransition>
 
@@ -62,24 +70,26 @@
 </template>
 
 <script>
-import PageInfo from "@theme/components/PageInfo";
-import { resolvePage, outboundRE, endingSlashRE } from "@theme/helpers/utils";
-import ModuleTransition from "@theme/components/ModuleTransition";
-import moduleTransitonMixin from "@theme/mixins/moduleTransiton";
-import SubSidebar from "@theme/components/SubSidebar";
+import PageInfo from '@theme/components/PageInfo';
+import { resolvePage, outboundRE, endingSlashRE } from '@theme/helpers/utils';
+import ModuleTransition from '@theme/components/ModuleTransition';
+import moduleTransitonMixin from '@theme/mixins/moduleTransiton';
+import SubSidebar from '@theme/components/SubSidebar';
 
 export default {
   mixins: [moduleTransitonMixin],
   components: { PageInfo, ModuleTransition, SubSidebar },
 
-  props: ["sidebarItems"],
+  props: ['sidebarItems'],
 
   data() {
     return {
       isHasKey: true,
     };
   },
-
+  created() {
+    console.log(86, this.$frontmatter);
+  },
   computed: {
     // 是否显示评论
     shouldShowComments() {
@@ -108,13 +118,13 @@ export default {
       return this.$page.lastUpdated;
     },
     lastUpdatedText() {
-      if (typeof this.$themeLocaleConfig.lastUpdated === "string") {
+      if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
         return this.$themeLocaleConfig.lastUpdated;
       }
-      if (typeof this.$themeConfig.lastUpdated === "string") {
+      if (typeof this.$themeConfig.lastUpdated === 'string') {
         return this.$themeConfig.lastUpdated;
       }
-      return "Last Updated";
+      return 'Last Updated';
     },
     prev() {
       const prev = this.$frontmatter.prev;
@@ -143,8 +153,8 @@ export default {
       const {
         repo,
         editLinks,
-        docsDir = "",
-        docsBranch = "master",
+        docsDir = '',
+        docsBranch = 'master',
         docsRepo = repo,
       } = this.$themeConfig;
 
@@ -157,7 +167,7 @@ export default {
           this.$page.relativePath
         );
       }
-      return "";
+      return '';
     },
     editLinkText() {
       return (
@@ -167,7 +177,7 @@ export default {
       );
     },
     pageStyle() {
-      return this.$showSubSideBar ? {} : { paddingRight: "0" };
+      return this.$showSubSideBar ? {} : { paddingRight: '0' };
     },
   },
 
@@ -177,10 +187,10 @@ export default {
       if (bitbucket.test(repo)) {
         const base = outboundRE.test(docsRepo) ? docsRepo : repo;
         return (
-          base.replace(endingSlashRE, "") +
+          base.replace(endingSlashRE, '') +
           `/src` +
           `/${docsBranch}/` +
-          (docsDir ? docsDir.replace(endingSlashRE, "") + "/" : "") +
+          (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '') +
           path +
           `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         );
@@ -190,10 +200,10 @@ export default {
         ? docsRepo
         : `https://github.com/${docsRepo}`;
       return (
-        base.replace(endingSlashRE, "") +
+        base.replace(endingSlashRE, '') +
         `/edit` +
         `/${docsBranch}/` +
-        (docsDir ? docsDir.replace(endingSlashRE, "") + "/" : "") +
+        (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '') +
         path
       );
     },
@@ -213,7 +223,7 @@ function find(page, items, offset) {
   flatten(items, res);
   for (let i = 0; i < res.length; i++) {
     const cur = res[i];
-    if (cur.type === "page" && cur.path === decodeURIComponent(page.path)) {
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
       return res[i + offset];
     }
   }
@@ -221,7 +231,7 @@ function find(page, items, offset) {
 
 function flatten(items, res) {
   for (let i = 0, l = items.length; i < l; i++) {
-    if (items[i].type === "group") {
+    if (items[i].type === 'group') {
       flatten(items[i].children || [], res);
     } else {
       res.push(items[i]);
@@ -234,7 +244,7 @@ function flatten(items, res) {
 @require '../styles/wrapper.styl'
 .page
   position relative
-  padding-top 5rem
+  padding-top 4rem
   padding-bottom 2rem
   padding-right 14rem
   display block
@@ -248,10 +258,20 @@ function flatten(items, res) {
       width 0
       height 0
   .page-title
-    max-width $contentWidth
-    margin 0 auto
-    padding 1rem 2.5rem
     color var(--text-color)
+    min-height 600px
+    // max-width $contentWidth
+    // margin 0 auto
+    // padding 1rem 2.5rem
+
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    .warp-title-content
+      width 100%
+      text-align center
+      position absolute
+      bottom  15%
   .page-edit
     @extend $wrapper
     padding-top 1rem
@@ -292,6 +312,7 @@ function flatten(items, res) {
       display none
     .page-title
       padding 0 1rem
+      background-size auto
     .page-edit
       .edit-link
         margin-bottom 0.5rem

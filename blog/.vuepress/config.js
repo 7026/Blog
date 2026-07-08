@@ -1,4 +1,4 @@
-const BgmMusic = require('./plugins/BgMusic')
+const BgmMusic = require('./plugins/BgMusic');
 
 module.exports = {
   title: '小人物', //这里是博客标题
@@ -22,7 +22,7 @@ module.exports = {
     },
   },
   themeConfig: {
-    subSidebar: 'auto', //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
+    // subSidebar: 'false', //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     //导航栏
     nav: [
       { text: '首页', link: '/', icon: 'reco-home' }, //text:导航标题内容，icon：图标样式
@@ -31,9 +31,20 @@ module.exports = {
         text: '梳理',
         icon: 'reco-message',
         items: [
-          { text: 'vuepress-reco', link: '/docs/theme-reco/' }, //item： 子导航
-          { text: 'VUE', link: '/docs/vue/' }, //item： 子导航
+          { text: 'React', link: '/docs/theme-reco/' }, //item： 子导航
+          { text: 'Vue', link: '/docs/vue/' }, //item： 子导航
           // { text: 'Linux', link: '/blogs/linux/' }, //item： 子导航
+        ],
+      },
+      {
+        text: '关于我',
+        icon: 'reco-account',
+        items: [
+          {
+            text: '简历',
+            link: 'https://ygyweb.cn/resume/',
+            icon: 'reco-document',
+          },
         ],
       },
       {
@@ -160,23 +171,6 @@ module.exports = {
         autoplay: true,
       },
     ],
-    // [
-    //   '@vuepress-reco/comments',
-    //   {
-    //     solution: 'vssue',
-    //     options: {
-    //       title: 'vuepress-theme-reco',
-    //       platform: 'gitee', //gitee 代码托管平台
-    //       owner: 'OWNER_OF_REPO',
-    //       repo: 'NAME_OF_REPO',
-    //       //https://vssue.js.org/zh/guide/gitee.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8
-    //       clientId:
-    //         '95041f7069a30cf846c10e3b7c423649246bc97d9a783c1ecd02cccbc4bf233e',
-    //       clientSecret:
-    //         '624937e7b8092cd235f70b174369e74ef4cb07963a698604a3ed31d08b4a81fc',
-    //     },
-    //   },
-    // ],
     [
       '@vuepress-reco/comments',
       {
@@ -197,4 +191,4 @@ module.exports = {
   markdown: {
     lineNumbers: true,
   },
-}
+};

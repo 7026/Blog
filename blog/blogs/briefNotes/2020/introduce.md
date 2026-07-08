@@ -2,13 +2,13 @@
 title: 简单介绍
 date: 2020-10-21
 tags:
-  - briefNotes
+  - BriefNotes
 categories:
-  - briefNotes
+  - BriefNotes
 sticky:
   - description: true
 img:
-  - /abstract/WechatIMG8.png
+  - /abstract/8.png
 ---
 
 :::tip 介绍

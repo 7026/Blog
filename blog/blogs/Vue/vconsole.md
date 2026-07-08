@@ -5,6 +5,8 @@ tags:
   - Vue
 categories:
   - Vue
+img:
+  - /abstract/1.jpg
 ---
 
 :::tip 介绍
